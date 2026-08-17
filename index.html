@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#315c50" />
+    <title>Ruang Tumbuh — Refleksi & Kesehatan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navigasi utama">
+        <a class="brand" href="#dashboard" data-page="dashboard" aria-label="Ruang Tumbuh, ke beranda">
+          <span class="brand-mark">↗</span>
+          <span>Ruang<br /><em>Tumbuh</em></span>
+        </a>
+        <nav class="nav-list">
+          <button class="nav-link is-active" data-page="dashboard"><span>⌂</span> Beranda</button>
+          <button class="nav-link" data-page="capture"><span>✦</span> Catat kejadian</button>
+          <button class="nav-link" data-page="reflections"><span>◫</span> Refleksi</button>
+          <button class="nav-link" data-page="practice"><span>✓</span> Latihan</button>
+          <button class="nav-link" data-page="health"><span>♡</span> Kesehatan</button>
+          <button class="nav-link" data-page="review"><span>◌</span> Tinjauan</button>
+        </nav>
+        <div class="sidebar-footer">
+          <p>Kesalahan bukan bukti bahwa kamu buruk. Ia bisa menjadi data untuk bertumbuh.</p>
+          <button class="text-button" id="privacyButton">Tentang privasi</button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="menu-button" id="menuButton" aria-label="Buka menu">☰</button>
+          <div>
+            <p class="eyebrow" id="topDate"></p>
+            <h1 id="pageTitle">Selamat datang</h1>
+          </div>
+          <button class="small-action" id="quickCaptureButton">+ Catat kejadian</button>
+        </header>
+
+        <section class="page is-visible" id="dashboardPage" data-page-content="dashboard">
+          <div class="welcome-card">
+            <div>
+              <p class="eyebrow">SATU LANGKAH PADA SATU WAKTU</p>
+              <h2>Ubah pengalaman menjadi <i>arah.</i></h2>
+              <p>Amati dengan jujur, ambil bagian tanggung jawabmu, lalu ciptakan perubahan kecil yang dapat dilatih.</p>
+              <button class="primary-button" data-go="capture">Mulai mencatat <span>→</span></button>
+            </div>
+            <div class="growth-orbit" aria-hidden="true">
+              <span class="orbit-label label-one">amati</span>
+              <span class="orbit-label label-two">pelajari</span>
+              <span class="orbit-label label-three">latih</span>
+              <span class="orbit-core">tumbuh</span>
+            </div>
+          </div>
+
+          <section class="section-block">
+            <div class="section-heading">
+              <div><p class="eyebrow">GAMBARAN HARI INI</p><h2>Perjalananmu</h2></div>
+              <button class="text-button" data-go="review">Lihat tinjauan →</button>
+            </div>
+            <div class="stats-grid" id="statsGrid"></div>
+          </section>
+
+          <section class="dashboard-grid">
+            <div class="panel">
+              <div class="panel-heading"><div><p class="eyebrow">LANGKAH BERIKUTNYA</p><h2>Latihan aktif</h2></div><button class="icon-button" data-go="practice" aria-label="Buka latihan">→</button></div>
+              <div id="activePractices" class="stack-list"></div>
+            </div>
+            <div class="panel muted-panel">
+              <p class="eyebrow">PENGINGAT LEMBUT</p>
+              <blockquote>“Tanggung jawab bukan selalu tentang menyalahkan diri; melainkan tentang mengurus bagian yang memang menjadi bagianmu.”</blockquote>
+              <p class="quote-credit">— untuk dirimu hari ini</p>
+            </div>
+          </section>
+
+          <section class="section-block health-dashboard-section">
+            <div class="section-heading"><div><p class="eyebrow">KESEHATAN HARI INI</p><h2>Dukung dirimu dengan lembut</h2></div><button class="text-button" data-go="health">Buka kesehatan →</button></div>
+            <div id="healthDashboard" class="health-dashboard"></div>
+          </section>
+
+          <section class="section-block">
+            <div class="section-heading"><div><p class="eyebrow">CATATAN TERBARU</p><h2>Yang sedang kamu pelajari</h2></div><button class="text-button" data-go="reflections">Lihat semua →</button></div>
+            <div id="recentReflections" class="reflection-grid"></div>
+          </section>
+        </section>
+
+        <section class="page" id="capturePage" data-page-content="capture">
+          <div class="page-intro">
+            <p class="eyebrow">CATAT KEJADIAN</p>
+            <h2>Mulai dari fakta, bukan vonis.</h2>
+            <p>Tulis apa yang terjadi dengan cukup jujur dan ringkas. Kamu dapat melengkapi refleksinya sekarang atau kapan pun nanti.</p>
+          </div>
+          <form id="reflectionForm" class="reflection-form">
+            <div class="form-section">
+              <div class="form-section-header"><span class="step-number">01</span><div><h3>Apa yang terjadi?</h3><p>Fakta yang bisa diamati, tanpa menyebut dirimu “buruk”, “gagal”, dan sebagainya.</p></div></div>
+              <div class="form-grid two-columns">
+                <label>Judul singkat<input required name="title" maxlength="90" placeholder="Contoh: Terlambat mengirim bagian tugas" /></label>
+                <label>Tanggal kejadian<input required type="date" name="date" id="eventDate" /></label>
+                <label>Kategori<select name="category"><option value="Kerja">Kerja</option><option value="Kuliah">Kuliah</option><option value="Komunikasi">Komunikasi</option><option value="Hubungan">Hubungan</option><option value="Kesehatan">Kesehatan</option><option value="Diri sendiri">Diri sendiri</option><option value="Lainnya">Lainnya</option></select></label>
+                <label>Emosi yang terasa<input name="emotions" maxlength="100" placeholder="Contoh: cemas, malu, defensif" /></label>
+              </div>
+              <label>Apa yang terjadi?<textarea required name="event" rows="4" placeholder="Contoh: Aku baru mulai mengerjakan pukul 18.00, padahal deadline-nya malam ini."></textarea></label>
+            </div>
+
+            <div class="form-section">
+              <div class="form-section-header"><span class="step-number">02</span><div><h3>Lihat dampak dan bagianmu</h3><p>Bertanggung jawab secara proporsional: bukan mengambil semua beban, bukan juga melempar semua beban.</p></div></div>
+              <div class="form-grid two-columns">
+                <label>Dampak terhadap diri sendiri<textarea name="impactSelf" rows="3" placeholder="Contoh: Aku terburu-buru dan hasilnya kurang rapi."></textarea></label>
+                <label>Dampak terhadap orang lain/pekerjaan<textarea name="impactOthers" rows="3" placeholder="Contoh: Teman kelompok punya waktu lebih sedikit untuk menggabungkan tugas."></textarea></label>
+              </div>
+              <label>Bagian yang menjadi tanggung jawabku<textarea name="ownership" rows="3" placeholder="Apa yang berada dalam kendalimu? Apa yang bisa kamu akui tanpa menyalahkan diri secara berlebihan?"></textarea></label>
+            </div>
+
+            <div class="form-section">
+              <div class="form-section-header"><span class="step-number">03</span><div><h3>Ambil pelajaran dan buat eksperimen</h3><p>Ubah refleksi menjadi perilaku kecil yang bisa dilihat dan diuji.</p></div></div>
+              <div class="form-grid two-columns">
+                <label>Kemungkinan penyebab akar<textarea name="rootCause" rows="3" placeholder="Contoh: Aku memperkirakan waktu terlalu optimistis dan takut memulai tugas besar."></textarea></label>
+                <label>Yang kupelajari tentang diriku<textarea name="lesson" rows="3" placeholder="Contoh: Aku cenderung menunda ketika tugas terasa besar."></textarea></label>
+              </div>
+              <label>Eksperimen perilaku baru<textarea name="action" rows="3" placeholder="Contoh: Begitu tugas diberikan, aku akan mengerjakannya minimal 30 menit pada hari yang sama."></textarea></label>
+              <div class="form-grid two-columns compact-fields">
+                <label>Mulai latihan<input type="date" name="actionStart" id="actionStart" /></label>
+                <label>Review kembali<input type="date" name="reviewDate" id="reviewDate" /></label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <p id="formNote">Data ini hanya disimpan di browser perangkat ini.</p>
+              <button class="primary-button" type="submit">Simpan refleksi <span>→</span></button>
+            </div>
+          </form>
+        </section>
+
+        <section class="page" id="reflectionsPage" data-page-content="reflections">
+          <div class="page-intro split-intro"><div><p class="eyebrow">REFLEKSI</p><h2>Temukan pola, bukan alasan untuk menghukum diri.</h2></div><button class="primary-button" data-go="capture">+ Catat baru</button></div>
+          <div class="filter-row" id="categoryFilters"></div>
+          <div id="allReflections" class="reflection-grid full-grid"></div>
+        </section>
+
+        <section class="page" id="practicePage" data-page-content="practice">
+          <div class="page-intro">
+            <p class="eyebrow">LATIHAN HARIAN</p>
+            <h2>Buktikan perubahan melalui langkah kecil.</h2>
+            <p>Beri tanda untuk latihan hari ini. Nilai ini bukan rapor tentang dirimu—ia adalah informasi agar eksperimenmu dapat diperbaiki.</p>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+          <div class="empty-practice-tip" id="emptyPracticeTip" hidden>
+            <span>✦</span><div><h3>Belum ada latihan aktif</h3><p>Di akhir refleksi, tuliskan satu perubahan perilaku yang ingin kamu coba.</p><button class="text-button" data-go="capture">Catat kejadian →</button></div>
+          </div>
+        </section>
+
+        <section class="page" id="healthPage" data-page-content="health">
+          <div class="page-intro split-intro">
+            <div><p class="eyebrow">KESEHATAN</p><h2>Rawat tubuh sebagai bagian dari pertumbuhanmu.</h2><p>Catat data yang berguna bagimu; sesuaikan rutinitas agar dapat dijalani, bukan agar terlihat sempurna.</p></div>
+            <button class="primary-button" id="healthReflectionButton">Jadikan refleksi <span>→</span></button>
+          </div>
+          <p class="health-disclaimer">Pelacak ini membantu pengamatan pribadi, bukan pengganti nasihat atau perawatan tenaga kesehatan.</p>
+
+          <div class="health-tabs" role="tablist" aria-label="Bagian kesehatan">
+            <button class="health-tab is-active" data-health-tab="today" role="tab">Hari ini</button>
+            <button class="health-tab" data-health-tab="routine" role="tab">Rutinitas</button>
+            <button class="health-tab" data-health-tab="food" role="tab">Makan</button>
+            <button class="health-tab" data-health-tab="rhythm" role="tab">Ritme minggu</button>
+          </div>
+
+          <div class="health-panel is-visible" data-health-panel="today">
+            <div class="health-overview-grid">
+              <section class="panel health-score-card"><p class="eyebrow">RINGKASAN HARI INI</p><div id="healthScoreContent"></div></section>
+              <section class="panel health-note-card"><p class="eyebrow">PRINSIP HARI INI</p><blockquote>“Perawatan yang konsisten tidak harus rumit. Pilih yang bisa kamu lakukan lagi besok.”</blockquote><p>Gunakan angka sebagai informasi, lalu tanggapi tubuhmu dengan lebih baik.</p></section>
+            </div>
+            <form id="healthCheckinForm" class="health-checkin panel">
+              <div class="panel-heading"><div><p class="eyebrow">CHECK-IN TUBUH</p><h2>Bagaimana keadaanmu hari ini?</h2></div><span class="today-label" id="healthTodayLabel"></span></div>
+              <div class="health-fields">
+                <label>Tidur (jam)<input type="number" name="sleep" min="0" max="24" step="0.5" placeholder="mis. 7,5" /></label>
+                <label>Energi (1–5)<select name="energy"><option value="">Pilih</option><option value="1">1 — sangat rendah</option><option value="2">2</option><option value="3">3 — cukup</option><option value="4">4</option><option value="5">5 — sangat baik</option></select></label>
+                <label>Suasana hati (1–5)<select name="mood"><option value="">Pilih</option><option value="1">1 — berat</option><option value="2">2</option><option value="3">3 — netral</option><option value="4">4</option><option value="5">5 — baik</option></select></label>
+                <label>Air minum (gelas)<input type="number" name="water" min="0" max="50" step="1" placeholder="mis. 6" /></label>
+                <label>Gerak (menit)<input type="number" name="movement" min="0" max="1440" step="5" placeholder="mis. 30" /></label>
+              </div>
+              <label>Catatan tubuh hari ini<textarea name="note" rows="3" placeholder="Contoh: Bahu terasa tegang setelah duduk lama; berjalan sore membuatku lebih tenang."></textarea></label>
+              <div class="form-actions"><p>Hanya catat yang membantumu melihat pola.</p><button class="primary-button" type="submit">Simpan check-in <span>→</span></button></div>
+            </form>
+          </div>
+
+          <div class="health-panel" data-health-panel="routine">
+            <section class="routine-summary panel"><div><p class="eyebrow">RUTINITAS HARI INI</p><h2 id="routineTitle">Ritual kecil untuk dirimu</h2><p id="routineDescription">Kamu bebas mengubahnya sesuai kebutuhan tubuh dan jadwalmu.</p></div><div class="routine-progress"><span id="routineProgressNumber">0/0</span><small>selesai</small><div class="routine-progress-track"><i id="routineProgressBar"></i></div></div></section>
+            <div id="routineList" class="routine-list"></div>
+            <form id="routineForm" class="add-routine panel">
+              <div><p class="eyebrow">TAMBAH RUTINITAS PRIBADI</p><h2>Buat sistem yang sesuai hidupmu</h2></div>
+              <div class="add-routine-fields"><label>Nama kegiatan<input required name="label" maxlength="80" placeholder="Contoh: Siapkan botol minum untuk besok" /></label><label>Waktu (opsional)<input name="time" maxlength="20" placeholder="Contoh: 21.30" /></label><label>Untuk hari<select name="day"><option value="Setiap hari">Setiap hari</option><option value="Senin">Senin</option><option value="Selasa">Selasa</option><option value="Rabu">Rabu</option><option value="Kamis">Kamis</option><option value="Jumat">Jumat</option><option value="Sabtu">Sabtu</option><option value="Minggu">Minggu</option></select></label><label>Area<select name="area"><option value="Perawatan diri">Perawatan diri</option><option value="Makan & hidrasi">Makan & hidrasi</option><option value="Gerak">Gerak</option><option value="Istirahat">Istirahat</option></select></label></div>
+              <button class="outline-button" type="submit">+ Tambahkan</button>
+            </form>
+          </div>
+
+          <div class="health-panel" data-health-panel="food">
+            <div class="food-summary-grid">
+              <section class="panel calorie-card"><p class="eyebrow">LOG MAKAN HARI INI</p><div class="calorie-number"><strong id="calorieTotal">0</strong><span>kcal dicatat</span></div><div class="calorie-track"><i id="calorieBar"></i></div><p id="calorieCaption">Catat sesuai kebutuhanmu, tanpa menghakimi diri.</p></section>
+              <section class="panel target-card"><p class="eyebrow">TARGET OPSIONAL</p><label>Target kalori pribadi<input id="calorieTargetInput" type="number" min="0" max="10000" step="50" placeholder="Tidak perlu diisi" /></label><p>Gunakan hanya bila target ini sudah kamu tetapkan sendiri atau bersama tenaga profesional.</p></section>
+            </div>
+            <form id="foodLogForm" class="food-form panel"><div><p class="eyebrow">TAMBAH CATATAN MAKAN</p><h2>Yang kamu makan hari ini</h2></div><div class="food-form-fields"><label>Waktu makan<select name="meal"><option value="Sarapan">Sarapan</option><option value="Makan siang">Makan siang</option><option value="Makan malam">Makan malam</option><option value="Snack">Snack</option><option value="Lainnya">Lainnya</option></select></label><label>Nama makanan/minuman<input required name="name" maxlength="100" placeholder="Contoh: Nasi, ayam, dan sayur" /></label><label>Kalori (opsional)<input name="calories" type="number" min="0" max="10000" step="1" placeholder="kcal" /></label></div><button class="primary-button" type="submit">Tambahkan <span>+</span></button></form>
+            <section class="panel food-log-panel"><div class="panel-heading"><div><p class="eyebrow">CATATAN HARI INI</p><h2>Makan dengan sadar</h2></div><button class="text-button" id="clearFoodButton">Kosongkan hari ini</button></div><div id="foodLogList" class="food-log-list"></div></section>
+          </div>
+
+          <div class="health-panel" data-health-panel="rhythm">
+            <section class="panel rhythm-intro"><p class="eyebrow">RITME MINGGUAN</p><h2>Rencana yang cukup jelas, cukup lentur.</h2><p>Versi ringkas dari jadwalmu: gerak, makan, perawatan diri, dan waktu pulih. Bila harimu berubah, pilih versi yang paling realistis—bukan memaksakan rencana awal.</p></section>
+            <div id="weeklyRhythm" class="weekly-rhythm"></div>
+          </div>
+        </section>
+
+        <section class="page" id="reviewPage" data-page-content="review">
+          <div class="page-intro split-intro"><div><p class="eyebrow">TINJAUAN 7 HARI</p><h2>Apa yang sedang kamu pelajari?</h2><p>Tinjau pola dengan rasa ingin tahu. Sesuaikan sistemnya bila eksperimen belum berjalan.</p></div><button class="outline-button" id="exportButton">Unduh data</button></div>
+          <div class="review-grid" id="reviewGrid"></div>
+          <div class="panel review-prompt" id="reviewPrompt"></div>
+          <div class="data-controls">
+            <div><h3>Data milikmu</h3><p>Disimpan lokal pada browser ini. Gunakan unduhan sebagai cadangan atau pindahkan ke perangkat lain.</p></div>
+            <div class="data-buttons"><label class="outline-button file-label">Pulihkan data<input id="importInput" type="file" accept="application/json" hidden /></label><button class="danger-button" id="clearDataButton">Hapus seluruh data</button></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="detailDialog" class="detail-dialog">
+      <div class="dialog-head"><button class="icon-button" id="closeDialog" aria-label="Tutup">×</button></div>
+      <div id="dialogContent"></div>
+    </dialog>
+    <dialog id="privacyDialog" class="privacy-dialog">
+      <button class="dialog-close" data-close-dialog="privacyDialog" aria-label="Tutup">×</button>
+      <p class="eyebrow">PRIVASI</p><h2>Ruang ini milikmu.</h2>
+      <p>Aplikasi ini tidak memakai akun maupun server. Refleksi dan catatan kesehatan disimpan dalam <em>local storage</em> browser pada perangkat ini.</p>
+      <p>Jangan gunakan komputer umum untuk catatan yang sensitif. Buat cadangan melalui menu “Unduh data” bila diperlukan.</p>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
