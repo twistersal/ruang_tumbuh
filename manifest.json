@@ -1,26 +1,33 @@
 {
+  "id": "./",
   "name": "Ruang Tumbuh",
   "short_name": "Ruang Tumbuh",
   "description": "Panduan gaya hidup pribadi",
-  "start_url": "/ruang_tumbuh/index.html",
-  "scope": "/ruang_tumbuh/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#992FDB",
-  "theme_color": "#3EE9A3",
+  "theme_color": "#315c50",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/ruang_tumbuh/ruang tumbuh icons.png",
+      "src": "./ruang_tumbuh_icons.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "./ruang_tumbuh_icons_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "shortcuts": [
     {
       "name": "Ruang Tumbuh",
-      "url": "/ruang_tumbuh/index.html",
-      "icons": [{ "src": "/ruang_tumbuh/ruang tumbuh icons.png", "sizes": "192x192" }]
+      "url": "./index.html",
+      "icons": [{ "src": "./ruang_tumbuh_icons.png", "sizes": "192x192" }]
     }
   ]
 }
