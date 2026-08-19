@@ -5,6 +5,8 @@ const ASSETS = [
   BASE + '/index.html',
   BASE + '/app.js',
   BASE + '/style.jss',
+  BASE + '/manifest.json',
+  BASE + '/ruang tumbuh icons.png',
 ];
 
 self.addEventListener('install', e => {
