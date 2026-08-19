@@ -10,28 +10,15 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/sal-project/icons/icon-192.png",
+      "src": "/ruang_tumbuh/ruang tumbuh icon.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/sal-project/icons/icon-512.png",
-      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
   "shortcuts": [
     {
-      "name": "Daily Checklist",
-      "url": "/sal-project/pastel-checklist.html",
-      "icons": [{ "src": "/sal-project/icons/icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Kalori Tracker",
-      "url": "/sal-project/pastel-kalori.html",
-      "icons": [{ "src": "/sal-project/icons/icon-192.png", "sizes": "192x192" }]
+      "name": "Ruang Tumbuh",
+      "url": "/ruang_tumbuh/index.html",
+      "icons": [{ "src": "/ruang_tumbuh/ruang tumbuh icon.png", "sizes": "192x192" }]
     }
-  ]
-}
