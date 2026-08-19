@@ -10,7 +10,7 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/ruang_tumbuh/ruang tumbuh icon.png",
+      "src": "/ruang_tumbuh/ruang tumbuh icons.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
@@ -20,7 +20,7 @@
     {
       "name": "Ruang Tumbuh",
       "url": "/ruang_tumbuh/index.html",
-      "icons": [{ "src": "/ruang_tumbuh/ruang tumbuh icon.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/ruang_tumbuh/ruang tumbuh icons.png", "sizes": "192x192" }]
     }
   ]
 }
